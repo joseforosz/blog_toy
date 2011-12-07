@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @blog_entry.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @blog_entry.body %>
+</p>
+
+<%= link_to 'Edit', edit_blog_entry_path(@blog_entry) %> |
+<%= link_to 'Back', blog_entries_path %>
+
+<h2> Comments </h2>
+
+<%= render @blog_entry.comments %>
+
+<%= render "comments/form" %>
+
+
