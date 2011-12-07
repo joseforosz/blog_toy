@@ -1,8 +1,33 @@
-This is a thrown together example for the Reston Ruby Newbies group.  Based on the Blogger demo for Rails 3 published as a lab exercise by JumpStart Labs, this incomplete example exists solely to show the concept of a nested, restful route between a blog entry and a comment.
+This app started life as an example coded live in front of the NoVa Ruby Newbies group.  Its purpose in life when we first started was to show a simple has_many and belongs_to between the blog_entry and the comment, and to show nested restful routing between the controllers.  As such, it started life as two pieces of uninteresting generated scaffolding, with the salient bits added in.
 
-If this were actual production code, it would have a real gui, real tests, etc.  The only thing to take away from this example are:
+As a result, we whittled down some controllers, and left the tests a failing mess.  It made the point, but it was bad hygiene.  Russ Olsen made me up my game tonight...  The failing tests are removed, and one new test has been added.  Also, some gems for future test direction have been added as well.  Here are our next steps:
 
-1) The examples in the routes file
-2) The controller's create method
-3) How the nested restful route is created for the comment form at the bottom of the blog_entry's view page (the form_for values).
 
+Newbies - feel free to check this application out and/or fork it to your own repo.  Your first goal is to:
+
+1) get it running, with the appropriate dependencies and 'bundle install'.
+2) run 'rake coverage:all' and see the resulting report that will be generated at:
+
+test/coverage/index.html
+
+3) Notice the lines of code in the controllers that are untested.  See them?  There is one that should be possible for you to fix...  take a look at the index method in the CommentsController - it is currently untested.  Your first mission is to get this code tested.  For your reference, you will:
+
+- add code into the CommentsControllerTest.  In fact, you'll see a commented out method that currently fails.
+
+- use that code and the equivalent in the BlogEntriesController test to make the test pass.
+
+- take a look at the testing guide at
+
+http://guides.rubyonrails.org/testing.html
+
+which can help if you get stuck - an of course there is our mailing list.
+
+Once you get that single test covered, consider how you might get to the other uncovered lines - looks like we might have to figure out a way to test a failing save... hmm...
+
+
+Future work we will do:
+
+1) Convert from using test fixtures to using FactoryGirl.
+2) Look at using mocks to test hard-to-reach code.
+3) Use Devise to add authentication, make blog entries and comments belong to users.
+4) send email.
